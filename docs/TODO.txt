@@ -1,0 +1,12 @@
+- Negociate Settings from interface to app, and back perhaps?
+- Continue to streamline the logging messages for readability
+- Clean up the panel code and frame code from GUI Builder
+- If the user has none of the addons, there's an error on sync -- verify the addon dir structure
+- Create proper java-doc commenting styles across the whole site
+- File change listeners for LUA files, and for rescanning LUA files altogether
+- possible Daemon Mode & headless operation -- sort of works now
+- Make the erase and exit first.
+- When you export settings to a file, would it be possible to default the name of the file to the one that JUU will recognize later? I.e. juniuploader.xml 
+- If it cannot find the WoW directory, can a prompt come up and ask the user to manually locate it on startup please?
+- If the user is starting the program for the first time, can it be set to also prompt them if it finds more than one WoW directry? (I.e. choose just one the first time) (multiple directories can then still be added by advanced users). 
+- Should this default to what was automaticallly found in the WoW directories tab please? If a user needs to add a new rule, they can... 

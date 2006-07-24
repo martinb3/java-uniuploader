@@ -24,26 +24,4 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>txt</name>
-			<type>2</type>
-			<location>C:/Documents and Settings/Martin Smith/My Documents/Eclipse Workspace/JavaUniUploader/txt</location>
-		</link>
-		<link>
-			<name>scripts</name>
-			<type>2</type>
-			<location>C:/Documents and Settings/Martin Smith/My Documents/Eclipse Workspace/JavaUniUploader/scripts</location>
-		</link>
-		<link>
-			<name>zip</name>
-			<type>2</type>
-			<location>C:/Documents and Settings/Martin Smith/My Documents/Eclipse Workspace/JavaUniUploader/dist/zip</location>
-		</link>
-		<link>
-			<name>lib</name>
-			<type>2</type>
-			<location>C:/Documents and Settings/Martin Smith/My Documents/Eclipse Workspace/JavaUniUploader/lib</location>
-		</link>
-	</linkedResources>
 </projectDescription>

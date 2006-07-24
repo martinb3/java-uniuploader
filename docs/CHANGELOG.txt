@@ -1,0 +1,86 @@
+Release Version: Beta 10
+- Addon folders are now created when they don't exist, allowing you to
+  sync addons that you didn't have at all before.
+
+Release Version: Beta 9
+- Bugfix for removing form pair groups.
+- JavaDoc documentation comments are all fixed, and generate no warnings,
+  however much of the code still needs to be JavaDoc'd.
+
+Release Version: Beta 8
+- Possible support for Java Web Start in the next version
+- Refactoring from Beta 6 and 7 broke some things with preferences, but
+  they all should be back to normal now.
+- The build script now has some new features, they aren't active yet.
+- Sorry for nothing new yet... been busy :)
+
+Release Version: Beta 7
+- jUniUploader now comes with source, an ant build file, and javadocs (please
+  don't hate my ugly Java skills, I wasn't expecting to release the source without
+  cleaning it up more, but then I got busy).
+- Monitoring for LUA file changes is almost there. Give me one more beta.
+- Fixed a bug with form variable upload lists not being updated.
+- Sending roster_update_password with encryption is no longer available. Now you 
+  are asked to send a variable encrypted when you add it.
+- Mac users should notice the menu bar at the top of the screen shows the name of
+  this program instead of ClassRunner (I must work on better names).
+- Launch WoW works for Windows users and hopefully Mac users too. Erase all settings
+  button is now also enabled, but will require you to exit the program.
+
+
+Release Version: Beta 6
+- Not a lot of changes here, but under the hood, you can now use the jar file
+  with the included javadoc documents to call directly into jUniUploader classes
+  and write your own Java driver class (think headless!). This is one step closer
+  to releasing the source (next release maybe!).
+- This beta may be a little buggy, as a lot of the API was changed around
+  and some extra useless OO structure was removed (it's still very OO, just not
+  over the top!).
+- That's all for now. Source soon as my new job is limiting my ability to work
+  on this project without other contributions :). Sadly, my new job is having a
+  limiting affect on my ability to play WoW as well.
+
+Release Version: Beta 5
+- More messages are being displayed in the status bar than before
+- Look and Feel of Java Swing is now a saved preference!
+- About Panel now exists. When you sync to interface, it will contain your logos!
+- I added an export settings button to the app settings panel. Use it wisely.
+- Implemented sending of roster_update_password securely functionality and setting
+- Changed the Mac "WoW Dir. Guess" to /Applications/World of Warcraft
+- For Mac users, we now use a more native-feeling file chooser dialog
+
+Release Version: Beta 4
+- Reworking of saving some of our preferences. Hopefully you will be able to open
+  two copies of the program, have the last one closed be the most recent saved
+  settings. Previously, if you opened the application twice, the first app lost
+  valid handles on the preferences data. Also, upload rules are nameless, and I
+  previously generated them a random key name. This no longer occurs -- but, it
+  means you *could* overwrite a rule in preferences if two rules were *identical*,
+  and next time you run you'll only see a single one.
+- Added an about panel. This will download 'logo' images from the interface url
+  and save them to the current directory. This is part of a greater effort
+  to enable UniAdmin and jUniUploader to sync successfully, even though they have
+  a different feature set.
+- Hopefully there are no more check boxes or data values that aren't saved and
+  when you close the program and then reopen it. I've implemented every one by now.
+- You can now use the group "none" to submit no form variables. If this doesn't work
+  properly, please notify me.
+- There's now support for enabling higher levels of debugging, and changing the Look
+  and Feel used by Java. Further, the UserAgent box has been moved into the panel too.
+
+Release Version: Beta 3
+- Status log at the bottom of the window, reports lots of new info!
+- You can export and import current settings to an xml file. See below.
+- If an XML file is found in the same directory as the class/jar, named
+  juniuploader.xml, its settings will get imported before the program reads
+  from system preferences. Once consumed, this XML file WILL be deleted.
+- An application settings panel has been added. Yes, I still need to move some
+  of the settings from the UA panel there. You'll find logging settings are not
+  saved when you close the program. I feel like this is necessary since it
+  produces so much information.
+
+Release Version: Beta 2
+- Windows don't bounce outwards as lists are populated with data
+- All settings except for checkboxes are saved and restored now
+- Buttons for uploading and syncing are disabled while those actions complete
+- Logging is much more specific, but there's no GUI way to adjust it yet

@@ -1,0 +1,6 @@
+- Q: Is there a way to distribute this jar file with preferences pre-set?
+  A: Yes. The application will consume a file called "juniuploader.xml" if it finds
+  	 this file. The file follows the same format as the one exported -- this is not
+  	 the place for sloppy XML. Verify your XML is legal against the DTD. Also, it is
+  	 CRITICAL to note that the file is DELETED once it is consumed. Upon any error,
+  	 the file will remain intact and the program will retry next time it runs.

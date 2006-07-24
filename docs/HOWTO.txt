@@ -1,0 +1,16 @@
+1. How to synchronize with your interface.php file: Add this URL to the text box 
+in the interface panel. Check the appropriate boxes. Then click the Sync button 
+on the main menu.
+
+2. How to upload files to your roster site: Enter the correct site (URL of update.php),
+then you need to make a "group" of form variables if you need to submit a username or 
+password to update.php (the roster). You probably need a variable called "username" and 
+one called "password" with the appropriate values. If you want to update the roster
+itself, you will also need one called "roster_update_password."
+
+This version supports uploading from multiple WoW directories, multiple accounts, 
+multiple files, and multiple Roster's. But -- You MUST create an "upload rule" for 
+each file. I could have allowed multiple LUA (SVs) files per upload rule, but I 
+decided it was silly since you hardly ever upload more than 2 files (= 2 rules), and 
+uploading is much more responsive / fails less if you are uploading one file per 
+HTTP post. 

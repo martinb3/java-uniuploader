@@ -1,0 +1,23 @@
+An open-source Java version of everyone's favorite uploader tool. It has been 
+verified to work fairly well on both Windows and Mac. This client requires the Java 
+runtime version 1.4 or higher.
+
+This project is Open Source, under an Apache license, and includes some components 
+from the Jakarta Commons project. With a 1.4 or greater JDK and Apache Ant, you 
+may build this project from source. It also includes classes that allow you to add jUU 
+functionality to new Java projects or write your own headless client with a few simple 
+method calls.
+
+It is seeking someone to adopt it and continue to improve it, as the original developer 
+doesn't play WoW anymore and doesn't have time to maintain it.  I used 1.4 
+(i.e. j2jdk1.4.2) for building everything, as well as Ant and Eclipse. Right 
+now, the source is very ugly, but it has been released.
+
+Inside the ZIP, there are a bunch of text files, as well as a single jar file. If you've
+properly installed Java on your operating system (1.4 or higher!), you should
+be able to double click on the jar and it will run the program.
+
+Right now, there is no installer other than just running the jar file. If you
+have somehome ruined your Java installation, but are able to run "java" on a
+terminal or command line, you may try "java -jar thejarfilename.jar" to run the
+program that way.
