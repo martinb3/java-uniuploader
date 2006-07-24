@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="jUniUploader" default="compile" basedir=".">
+	<description>
+        simple example build file
+    </description>
+	<!-- set global properties for this build -->
+
+	<property name="src.dir"		location="src"/>
+    <property name="build.dir"		location="build"/>
+	<property name="dist.dir"  		location="dist"/>
+    <property name="bin.dir"		location="bin"/>
+    <property name="scripts.dir"	location="scripts"/>
+    <property name="jar.dir"		location="${dist.dir}/jar"/>
+    <property name="zip.dir"		location="${dist.dir}/zip"/>
+    <property name="pkg.dir"		location="pkg"/>	
+	<property name="lib.dir"		location="lib"/>
+	<property name="txt.dir"		location="txt"/>
+	<property name="apidocs.dir"	location="javadoc"/>
+    <property name="main.class"  	value="org.mbs.juniuploader.jUniUploader"/>
+	<property name="dist.filename" 	value="jUniUploader"/>
+	<property name="app.version"	value="Beta"/>
+	<property name="app.release"	value="7"/>
+	
+	<path id="project.class.path">
+		<pathelement path="${classpath}"/>
+		<pathelement location="${src}/*"/>
+		<fileset dir="lib" includes="*.jar"/>
+	</path>
+	
+	<target name="init">
+	    <tstamp/>
+
+		<!-- Create the build directory structure used by all tasks -->
+	    <mkdir dir="${build.dir}"/>
+	    <mkdir dir="${dist.dir}"/>
+		<mkdir dir="${jar.dir}"/>
+		<mkdir dir="${zip.dir}"/>
+	  </target>
+
+	<target name="clean" description="clean up" >
+		<delete dir="${build.dir}"/>
+	    <delete file="${jar.dir}/${dist.filename}.jar"/>
+	    <delete file="${zip.dir}/${dist.filename}.zip"/>		
+	</target>
+	
+	<target name="compile" depends="init" description="compile the source " >
+	    <javac srcdir="${src.dir}" destdir="${build.dir}" target="1.4" source="1.4">
+			<classpath refid="project.class.path"/>
+	    	<!-- For 1.5 and deprecated Vector casting: -->
+	    	<!-- compilerarg value="-Xlint:unchecked"/ -->
+		</javac>
+	</target>
+
+	<target name="dist" description="generate the distribution" >
+		<antcall target="apidocs"/>
+		<antcall target="zip"/>
+	</target>
+	
+	<target name="jar" depends="compile">
+	    <jar jarfile="${jar.dir}/${dist.filename}-${DSTAMP}-${TSTAMP}.jar" basedir="${build.dir}">
+		  	<manifest>
+	  			<attribute name="Main-Class" value="${main.class}"/>
+			</manifest>
+	    	
+		    <!-- 
+	    		The specific files we want to include externally into our jar 
+	    		are included here individually. We exclude license files, because we
+		    	have a special way of handling them (in a txt dir that is included).
+		    -->
+			<zipfileset src="${lib.dir}/commons-codec-1.3.jar" excludes="license/**,META-INF/LICENSE.txt"/>
+	    	<zipfileset src="${lib.dir}/commons-httpclient-3.0.jar" excludes="license/**,META-INF/LICENSE.txt"/>	    	
+			<zipfileset src="${lib.dir}/commons-logging-api.jar" excludes="license/**,META-INF/LICENSE.txt"/>	    	
+			<zipfileset src="${lib.dir}/xercesImpl.jar" excludes="license/**,META-INF/LICENSE.txt"/>
+			<zipfileset src="${lib.dir}/xml-apis.jar" excludes="license/**,META-INF/LICENSE.txt"/>
+	    	
+		    <!--
+		    	Bring in all the text files in the ${txt.dir}, perhaps one day we can
+		    	automate the licensing includes, for now we manage txt.dir externally.
+		    -->
+		    <!-- fileset dir="${txt.dir}" excludes="${apidocs.dir}/**"/ -->
+		    <fileset dir="${txt.dir}"/>
+		</jar>
+
+		<!-- if we use Java Web start, this will be required -->
+	    <!-- signjar
+	    		jar="${jar.dir}/${dist.filename}-${DSTAMP}-${TSTAMP}.jar"
+	    		alias="juu"
+	    		keystore="./scripts/JavaUniUploader.kst"
+	    		storepass="f5s2pre8ep9amaxub3uwufru"
+			/-->
+		
+	  	<copy file="${jar.dir}/${dist.filename}-${DSTAMP}-${TSTAMP}.jar" tofile="${jar.dir}/${dist.filename}.jar"/>
+	</target>
+
+	<target name="zip" depends="jar">
+	    <zip destfile="${zip.dir}/${dist.filename}-${DSTAMP}-${TSTAMP}.zip">
+			<fileset file="${jar.dir}/${dist.filename}.jar"/>
+		    <!--
+		    	Bring in all the text files in the ${txt.dir}, perhaps one day we can
+		    	automate the licensing includes, for now we manage txt.dir externally.
+		    -->
+		    <!--fileset dir="${txt.dir}" excludes="license/**"/-->
+	    	<zipfileset prefix="docs" dir="${txt.dir}"/>
+	    	<zipfileset prefix="docs/api" dir="${apidocs.dir}"/>	    	
+	    	<zipfileset prefix="source" dir="${src.dir}"/>
+	    	<zipfileset prefix="extras" dir="." includes="build.xml"/>
+	    </zip>
+		<copy file="${zip.dir}/${dist.filename}-${DSTAMP}-${TSTAMP}.zip" tofile="${zip.dir}/${dist.filename}.zip"/>
+	</target>
+	
+    <target name="jar run" depends="jar">
+        <java jar="${jar.dir}/${dist.filename}" fork="true"/>
+    </target>
+
+  	<target name="run">
+  		<antcall target="compile"/>
+		<java classname="${main.class}" fork="true">
+		<classpath>
+			<pathelement path="${build.dir}"/>
+		</classpath>
+		<classpath refid="project.class.path"/>
+		</java>
+    </target>
+	
+	<target name="jnlp2msi">
+		<exec newenvironment="true" vmlauncher="no" executable="C:\Program Files\Java\jdic-0.9.1-bin-windows\jnlp2msi.exe">
+			<env key="CLASSPATH" value=".;C:\Program Files\Java\jdic-0.9.1-bin-windows;C:\Program Files\Java\jdk1.5.0_01\jre\lib;C:\Program Files\Java\jdic-0.9.1-bin-windows\packager.jar;C:\Program Files\Java\jdk1.5.0_01\jre\lib\deploy.jar;C:\Program Files\Java\jdk1.5.0_01\jre\lib\javaws.jar"/>
+			<env key="MSSDKDir" value="C:\DK\PLATFORM"/>			
+
+			<arg line="-version ${app.version} -outputdir ${pkg.dir} -packagename juupkg -release ${app.release} ${scripts.dir}\${dist.filename}.jnlp"/>
+			
+
+		</exec>
+	</target>
+	
+	<target name="apidocs">
+		<javadoc destdir="${apidocs.dir}">
+			<packageset dir="${src.dir}"/>
+			<classpath refid="project.class.path"/>
+		</javadoc>
+		</target>
+
+</project>

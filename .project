@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>JavaUniUploader</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.ui.externaltools.ExternalToolBuilder</name>
+			<triggers>auto,clean,full,</triggers>
+			<arguments>
+				<dictionary>
+					<key>LaunchConfigHandle</key>
+					<value>&lt;project&gt;/.externalToolBuilders/Ant Build.XML.launch</value>
+				</dictionary>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>org.eclipse.jdt.core.javabuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.jdt.core.javanature</nature>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>txt</name>
+			<type>2</type>
+			<location>C:/Documents and Settings/Martin Smith/My Documents/Eclipse Workspace/JavaUniUploader/txt</location>
+		</link>
+		<link>
+			<name>scripts</name>
+			<type>2</type>
+			<location>C:/Documents and Settings/Martin Smith/My Documents/Eclipse Workspace/JavaUniUploader/scripts</location>
+		</link>
+		<link>
+			<name>zip</name>
+			<type>2</type>
+			<location>C:/Documents and Settings/Martin Smith/My Documents/Eclipse Workspace/JavaUniUploader/dist/zip</location>
+		</link>
+		<link>
+			<name>lib</name>
+			<type>2</type>
+			<location>C:/Documents and Settings/Martin Smith/My Documents/Eclipse Workspace/JavaUniUploader/lib</location>
+		</link>
+	</linkedResources>
+</projectDescription>
